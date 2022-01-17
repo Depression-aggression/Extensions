@@ -27,10 +27,10 @@ namespace Depra.Extensions
                 Vector3 euler;
 
                 // if the input quaternion is normalized, this is exactly one. Otherwise, this acts as a correction factor for the quaternion's not-normalizedness
-                float unit = (q.x * q.x) + (q.y * q.y) + (q.z * q.z) + (q.w * q.w);
+                var unit = (q.x * q.x) + (q.y * q.y) + (q.z * q.z) + (q.w * q.w);
 
                 // this will have a magnitude of 0.5 or greater if and only if this is a singularity case
-                float test = q.x * q.w - q.y * q.z;
+                var test = q.x * q.w - q.y * q.z;
 
                 if (test > 0.4995f * unit) // singularity at north pole
                 {
@@ -64,16 +64,16 @@ namespace Depra.Extensions
 
             Quaternion eulerToQuaternion(Vector3 euler)
             {
-                float xOver2 = euler.x * Mathf.Deg2Rad * 0.5f;
-                float yOver2 = euler.y * Mathf.Deg2Rad * 0.5f;
-                float zOver2 = euler.z * Mathf.Deg2Rad * 0.5f;
+                var xOver2 = euler.x * Mathf.Deg2Rad * 0.5f;
+                var yOver2 = euler.y * Mathf.Deg2Rad * 0.5f;
+                var zOver2 = euler.z * Mathf.Deg2Rad * 0.5f;
 
-                float sinXOver2 = Mathf.Sin(xOver2);
-                float cosXOver2 = Mathf.Cos(xOver2);
-                float sinYOver2 = Mathf.Sin(yOver2);
-                float cosYOver2 = Mathf.Cos(yOver2);
-                float sinZOver2 = Mathf.Sin(zOver2);
-                float cosZOver2 = Mathf.Cos(zOver2);
+                var sinXOver2 = Mathf.Sin(xOver2);
+                var cosXOver2 = Mathf.Cos(xOver2);
+                var sinYOver2 = Mathf.Sin(yOver2);
+                var cosYOver2 = Mathf.Cos(yOver2);
+                var sinZOver2 = Mathf.Sin(zOver2);
+                var cosZOver2 = Mathf.Cos(zOver2);
 
                 Quaternion result;
                 result.x = cosYOver2 * sinXOver2 * cosZOver2 + sinYOver2 * cosXOver2 * sinZOver2;

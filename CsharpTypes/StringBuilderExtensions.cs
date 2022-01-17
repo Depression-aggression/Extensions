@@ -16,7 +16,7 @@ namespace Depra.Extensions
 
             for (var i = startIndex; i < builder.Length; ++i)
             {
-                char charAtIndex = builder[i];
+                var charAtIndex = builder[i];
 
                 if (ignoreCase)
                 {
@@ -39,7 +39,7 @@ namespace Depra.Extensions
             int findIndex;
             for (var i = startIndex; i < maxSearchLength; ++i)
             {
-                char charAtIndex = GetCharInBuilder(i);
+                var charAtIndex = GetCharInBuilder(i);
                 if (charAtIndex == GetCharInFind(0))
                 {
                     findIndex = 1;
@@ -151,7 +151,9 @@ namespace Depra.Extensions
         public static StringBuilder TrimStart(this StringBuilder builder, params char[] remove)
         {
             while (builder.Length > 0 && remove.Contains(builder[0]))
+            {
                 builder.Remove(startIndex: 0, length: 1);
+            }
 
             return builder;
         }
@@ -160,7 +162,9 @@ namespace Depra.Extensions
         public static StringBuilder TrimEnd(this StringBuilder builder, char remove = ' ')
         {
             while (builder.Length > 0 && builder[builder.Length - 1] == remove)
+            {
                 builder.Remove(startIndex: builder.Length - 1, length: 1);
+            }
 
             return builder;
         }
@@ -168,7 +172,9 @@ namespace Depra.Extensions
         public static StringBuilder TrimEnd(this StringBuilder builder, char[] remove)
         {
             while (builder.Length > 0 && remove.Contains(builder[builder.Length - 1]))
+            {
                 builder.Remove(startIndex: builder.Length - 1, length: 1);
+            }
 
             return builder;
         }
@@ -197,11 +203,12 @@ namespace Depra.Extensions
             {
                 throw new ArgumentException($"{nameof(characterCount)} is greater than the length of the builder");
             }
+
             if (characterCount < 0)
             {
                 throw new ArgumentException($"{nameof(characterCount)} cannot be less than 0");
             }
-            
+
             builder.Remove(startIndex: 0, length: characterCount);
             return builder;
         }
@@ -212,16 +219,17 @@ namespace Depra.Extensions
             {
                 throw new ArgumentException($"{nameof(characterCount)} is greater than the length of the builder");
             }
+
             if (characterCount < 0)
             {
                 throw new ArgumentException($"{nameof(characterCount)} cannot be less than 0");
             }
-            
+
             builder.Remove(startIndex: builder.Length - characterCount, length: characterCount);
             return builder;
         }
-
-
+        
+        
         public static bool StartsWith(this StringBuilder builder, char character)
             => builder.Length > 0 && builder[0] == character;
 
@@ -250,27 +258,31 @@ namespace Depra.Extensions
             {
                 throw new ArgumentException($"{nameof(startIndex)} must not be less than 0");
             }
+
             if (endIndex < 0)
             {
                 throw new ArgumentException($"{nameof(endIndex)} must not be less than 0");
             }
+
             if (endIndex < startIndex)
             {
                 throw new ArgumentException($"{nameof(endIndex)} must not be less than {nameof(startIndex)}");
             }
+
             if (startIndex >= builder.Length)
             {
                 throw new ArgumentOutOfRangeException($"{nameof(startIndex)} is outside the range of the string!");
             }
+
             if (endIndex >= builder.Length)
             {
                 throw new ArgumentOutOfRangeException($"{nameof(endIndex)} is outside the range of the string!");
             }
-            
+
             var length = endIndex - startIndex + 1;
             return builder.ToString(startIndex, length);
         }
-        
+
         public static StringBuilder InsertChain(this StringBuilder builder, int index, IEnumerable<string> elements)
             => InsertChain(builder, index, out var _, elements);
 
@@ -314,15 +326,14 @@ namespace Depra.Extensions
 
         public static StringBuilder AppendChain(this StringBuilder builder, params string[] elements)
             => builder.InsertChain(builder.Length, elements);
-
+        
 
         public static bool IsEmpty(this StringBuilder builder)
             => builder.Length == 0;
 
         public static bool IsNotEmpty(this StringBuilder builder)
             => builder.Length > 0;
-
-
+        
         public static bool IsEmptyOrWhitespace(this StringBuilder builder)
         {
             if (builder.IsEmpty())

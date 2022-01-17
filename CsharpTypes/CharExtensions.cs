@@ -1,7 +1,12 @@
 namespace Depra.Extensions
 {
+    /// <summary>
+    /// <see cref="char"/> extensions.
+    /// </summary>
     public static class CharExtensions
     {
+        #region Syntax
+        
         public static bool IsWhitespace(this char value)
             => char.IsWhiteSpace(value);
 
@@ -10,5 +15,7 @@ namespace Depra.Extensions
 
         public static bool EqualsCaseInsensitive(this char value, char other)
             => char.ToUpperInvariant(value) == char.ToUpperInvariant(other);
+        
+        #endregion
     }
 }

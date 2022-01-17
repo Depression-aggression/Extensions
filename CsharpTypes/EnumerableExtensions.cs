@@ -6,10 +6,37 @@ using Random = UnityEngine.Random;
 
 namespace Depra.Extensions
 {
-    public static class CollectionExtensions
+    public static class EnumerableExtensions
     {
-        #region Random
+        #region Syntax
         
+        /// <summary>
+        /// Returns true if collection is null or empty.
+        /// </summary>
+        public static bool IsNullOrEmpty<T>(this IEnumerable<T> source)
+            => source == null || !source.Any();
+
+        /// <summary>
+        /// Returns specified value if source is null/empty/else same.
+        /// </summary>
+        public static IEnumerable<T> Or<T>(this IEnumerable<T> source, IEnumerable<T> or) =>
+            source.IsNullOrEmpty() ? or : source;
+
+        /// <summary>
+        /// Returns empty if enumerable is null else same enumerable.
+        /// </summary>
+        public static IEnumerable<T> OrEmpty<T>(this IEnumerable<T> source)
+            => source ?? Enumerable.Empty<T>();
+
+        /// <summary>
+        /// Returns empty if enumerable is null else same enumerable.
+        /// </summary>
+        public static IEnumerable<T> EmptyIfDefault<T>(this IEnumerable<T> source) => source.OrEmpty();
+        
+        #endregion
+        
+        #region Random
+
         /// <summary>
         /// Return random element.
         /// </summary>
@@ -18,7 +45,7 @@ namespace Depra.Extensions
         /// <returns>random element</returns>
         public static T RandomElement<T>(this IEnumerable<T> elements)
         {
-            return elements.Any() == false 
+            return elements.Any() == false
                 ? default(T)
                 : elements.ElementAt(Random.Range(0, elements.Count()));
         }
