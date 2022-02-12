@@ -1,3 +1,4 @@
+using Depra.Extensions.UnityStructs;
 using NUnit.Framework;
 using Unity.PerformanceTesting;
 using UnityEngine;
@@ -25,7 +26,7 @@ namespace Depra.Extensions.Tests
         {
             using (Measure.Frames().Scope())
             {
-                Color.RGBToHSV(_testedColor, out var h, out var s, out var v); 
+                Color.RGBToHSV(_testedColor, out var h, out var s, out var v);
             }
         }
 

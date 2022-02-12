@@ -2,9 +2,6 @@ using UnityEngine;
 
 namespace Depra.Extensions
 {
-    /// <summary>
-    /// геометрия
-    /// </summary>
     public static class GeometryUtils
     {
         /// <summary>

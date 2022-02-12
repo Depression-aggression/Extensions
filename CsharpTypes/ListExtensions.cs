@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Depra.Extensions
+namespace Depra.Extensions.CsharpTypes
 {
+    /// <summary>
+    /// <see cref="List{T}"/> extensions.
+    /// </summary>
     public static class ListExtensions
     {
         /// <summary>

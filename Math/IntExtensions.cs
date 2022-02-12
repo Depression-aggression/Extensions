@@ -4,22 +4,23 @@
     {
         public static string ConvertSeconds(int time)
         {
-            var _minutes = time / 60;
-            string minutes = "";
-            int _seconds = time % 60;
-            string seconds = "";
+            var minutes = time / 60;
+            var minutesText = "";
+            
+            var seconds = time % 60;
+            var secondsText = "";
 
-            if (_minutes > 0)
+            if (minutes > 0)
             {
-                minutes = _minutes + " minute" + (_minutes > 1 ? "s " : " ");
+                minutesText = minutes + " minute" + (minutes > 1 ? "s " : " ");
             }
 
-            if (_seconds > 0)
+            if (seconds > 0)
             {
-                seconds = _seconds + " second" + (_seconds > 1 ? "s " : " ");
+                secondsText = seconds + " second" + (seconds > 1 ? "s " : " ");
             }
 
-            return (minutes + seconds).Substring(0, (minutes + seconds).Length - 1);
+            return (minutesText + secondsText).Substring(0, (minutesText + secondsText).Length - 1);
         }
     }
 }

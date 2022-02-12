@@ -5,12 +5,12 @@ namespace Depra.Extensions.Exceptions
     /// <summary>
     /// Exception helper class.
     /// </summary>
-    internal class ExceptionHelper
+    public static class ExceptionHelper
     {
         /// <summary>
         /// Throws NullReferenceException if true with message.
         /// </summary>
-        internal static void ThrowIfNull(bool throwEx, string exMessage)
+        public static void ThrowIfNull(bool throwEx, string exMessage)
         {
             if (throwEx)
             {
@@ -21,7 +21,7 @@ namespace Depra.Extensions.Exceptions
         /// <summary>
         /// Throws ArgumentNullException if true with message.
         /// </summary>
-        internal static void ThrowIfArgumentNull(bool throwEx, string exMessage)
+        public static void ThrowIfArgumentNull(bool throwEx, string exMessage)
         {
             if (throwEx)
             {
@@ -32,7 +32,7 @@ namespace Depra.Extensions.Exceptions
         /// <summary>
         /// Throws EmptyException if true with message.
         /// </summary>
-        internal static void ThrowIfEmpty(bool throwEx, string exMessage)
+        public static void ThrowIfEmpty(bool throwEx, string exMessage)
         {
             if (throwEx)
             {
@@ -43,7 +43,7 @@ namespace Depra.Extensions.Exceptions
         /// <summary>
         /// Throws ArgumentOutOfRangeException if true with message.
         /// </summary>
-        internal static void ThrowIfArgumentOutOfRange(bool throwEx, string exMessage)
+        public static void ThrowIfArgumentOutOfRange(bool throwEx, string exMessage)
         {
             if (throwEx)
             {

@@ -6,12 +6,12 @@ namespace Depra.Extensions
     {
         public static float Lerp(float from, float to, float value)
         {
-            if (value < 0.0f)
-                return from;
-            if (value > 1.0f)
-                return to;
-
-            return (to - from) * value + from;
+            return value switch
+            {
+                < 0.0f => @from,
+                > 1.0f => to,
+                _ => (to - @from) * value + @from
+            };
         }
 
         public static float LerpUnclamped(float from, float to, float value)
@@ -24,16 +24,26 @@ namespace Depra.Extensions
             if (from < to)
             {
                 if (value < from)
+                {
                     return 0.0f;
+                }
+
                 if (value > to)
+                {
                     return 1.0f;
+                }
             }
             else
             {
                 if (value < to)
+                {
                     return 1.0f;
+                }
+
                 if (value > @from)
+                {
                     return 0.0f;
+                }
             }
 
             return (value - from) / (to - from);
@@ -46,13 +56,16 @@ namespace Depra.Extensions
 
         public static float SmoothStep(float from, float to, float value)
         {
-            if (value < 0.0f)
-                return from;
-            if (value > 1.0f)
-                return to;
-
-            value = value * value * (3.0f - 2.0f * value);
-            return (1.0f - value) * from + value * to;
+            switch (value)
+            {
+                case < 0.0f:
+                    return @from;
+                case > 1.0f:
+                    return to;
+                default:
+                    value = value * value * (3.0f - 2.0f * value);
+                    return (1.0f - value) * @from + value * to;
+            }
         }
 
         public static float SmoothStepUnclamped(float from, float to, float value)
@@ -66,16 +79,24 @@ namespace Depra.Extensions
             if (from2 < to2)
             {
                 if (value < from2)
+                {
                     value = from2;
+                }
                 else if (value > to2)
+                {
                     value = to2;
+                }
             }
             else
             {
                 if (value < to2)
+                {
                     value = to2;
+                }
                 else if (value > from2)
+                {
                     value = from2;
+                }
             }
 
             return (to - from) * ((value - from2) / (to2 - from2)) + from;
@@ -109,15 +130,15 @@ namespace Depra.Extensions
             return start + (end - start) * value;
         }
 
-        public static float Bounce(float x)
+        public static float Bounce(float value)
         {
-            return Mathf.Abs(Mathf.Sin(6.28f * (x + 1f) * (x + 1f)) * (1f - x));
+            return Mathf.Abs(Mathf.Sin(6.28f * (value + 1f) * (value + 1f)) * (1f - value));
         }
 
         // Test for value that is near specified float (due to floating point inprecision).
-        public static bool Approx(float val, float about, float range)
+        public static bool Approx(float value, float about, float range)
         {
-            return ((Mathf.Abs(val - about) < range));
+            return ((Mathf.Abs(value - about) < range));
         }
 
         /*

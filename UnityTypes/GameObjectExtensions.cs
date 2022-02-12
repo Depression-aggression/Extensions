@@ -6,7 +6,7 @@ namespace Depra.Extensions.UnityTypes
     /// <summary>
     /// Helper methods for performing additional operations on <see cref="GameObject"/> instances.
     /// </summary>
-    public static class GameObjectExtension
+    public static class GameObjectExtensions
     {
         /// <summary>
         /// Builds a string that represents a <see cref="GameObject"/>'s position in the scene hierarchy.

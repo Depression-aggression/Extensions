@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace Depra.Extensions
+namespace Depra.Extensions.CsharpTypes
 {
+    /// <summary>
+    /// <see cref="Dictionary{TKey,TValue}"/> extensions.
+    /// </summary>
     public static class DictionaryExtensions
     {
         /// <summary>

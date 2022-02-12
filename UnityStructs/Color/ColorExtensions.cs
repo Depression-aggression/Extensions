@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 
-namespace Depra.Extensions
+namespace Depra.Extensions.UnityStructs
 {
+    /// <summary>
+    /// <see cref="Color"/> extensions.
+    /// </summary>
     public static class ColorExtensions
     {
-        public static HSV ToHsv(this Color color)
+        public static HSV ToHsv(this UnityEngine.Color color)
         {
             return HSV.FromColor(color);
         }
 
-        public static HSL ToHsl(this Color color)
+        public static HSL ToHsl(this UnityEngine.Color color)
         {
             return HSL.FromColor(color);
         }
@@ -20,14 +23,14 @@ namespace Depra.Extensions
         /// <param name="color"></param>
         /// <param name="minClamp"></param>
         /// <returns></returns>
-        public static Color MakeRandomColor(this Color color, float minClamp = 0.5f)
+        public static UnityEngine.Color MakeRandomColor(this UnityEngine.Color color, float minClamp = 0.5f)
         {
             var randCol = Random.onUnitSphere * 3;
             randCol.x = Mathf.Clamp(randCol.x, minClamp, 1f);
             randCol.y = Mathf.Clamp(randCol.y, minClamp, 1f);
             randCol.z = Mathf.Clamp(randCol.z, minClamp, 1f);
 
-            return new Color(randCol.x, randCol.y, randCol.z, 1f);
+            return new UnityEngine.Color(randCol.x, randCol.y, randCol.z, 1f);
         }
 
         /// <summary>
@@ -37,7 +40,7 @@ namespace Depra.Extensions
         /// <param name="c2"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static Color Lerp(Color c1, Color c2, float value)
+        public static UnityEngine.Color Lerp(UnityEngine.Color c1, UnityEngine.Color c2, float value)
         {
             if (value > 1.0f)
             {
@@ -49,7 +52,7 @@ namespace Depra.Extensions
                 return c1;
             }
 
-            return new Color(c1.r + (c2.r - c1.r) * value,
+            return new UnityEngine.Color(c1.r + (c2.r - c1.r) * value,
                 c1.g + (c2.g - c1.g) * value,
                 c1.b + (c2.b - c1.b) * value,
                 c1.a + (c2.a - c1.a) * value);

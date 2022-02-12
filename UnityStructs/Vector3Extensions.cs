@@ -1,8 +1,10 @@
-﻿using Codice.Utils;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Depra.Extensions.UnityStructs
 {
+	/// <summary>
+	/// <see cref="Vector3"/> extensions.
+	/// </summary>
 	public static class Vector3Extensions
 	{
 		/// <summary>
@@ -131,8 +133,7 @@ namespace Depra.Extensions.UnityStructs
 		public static float DistanceZ(this Vector3 curVec, Vector3 toVec) {
 			return Mathf.Abs(toVec.z - curVec.z);
 		}
-
-
+		
 		/// <summary>
 		/// 
 		/// </summary>
@@ -303,9 +304,10 @@ namespace Depra.Extensions.UnityStructs
 		{
 			direction = direction.normalized;
 			var n = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
 			if (n < 0)
+			{
 				n += 360;
+			}
 
 			return n;
 		}

@@ -1,8 +1,11 @@
 using System;
 using System.Text;
 
-namespace Depra.Extensions
+namespace Depra.Extensions.CsharpTypes
 {
+    /// <summary>
+    /// <see cref="string"/> extensions.
+    /// </summary>
     public static class StringExtensions
     {
         #region Syntax
@@ -10,8 +13,15 @@ namespace Depra.Extensions
         /// <summary>
         /// Returns true if string is null or empty.
         /// </summary>
-        public static bool IsNullOrEmpty(this string value)
-            => string.IsNullOrEmpty(value);
+        public static bool IsNullOrEmpty(this string value, bool trimSpaces = true)
+        {
+            if (value == null)
+            {
+                return true;
+            }
+
+            return trimSpaces == false ? value.Length == 0 : value.Trim().Length == 0;
+        }
 
         /// <summary>
         /// Returns true if string is null, empty or only whitespaces.
@@ -87,7 +97,7 @@ namespace Depra.Extensions
         }
 
         /// <summary>
-        /// Get a section of text
+        /// Get a section of text.
         /// </summary>
         public static string Snip(this string text, int startIndex, int endIndex)
         {

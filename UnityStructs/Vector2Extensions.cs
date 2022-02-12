@@ -2,6 +2,9 @@
 
 namespace Depra.Extensions.UnityStructs
 {
+    /// <summary>
+    /// <see cref="Vector2"/> extensions.
+    /// </summary>
     public static class Vector2Extensions
     {
         public static Vector2 NearestPointStrict(Vector2 lineStart, Vector2 lineEnd, Vector2 point)

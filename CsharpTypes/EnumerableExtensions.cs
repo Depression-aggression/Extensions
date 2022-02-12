@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Depra.Extensions.Exceptions;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Depra.Extensions
+namespace Depra.Extensions.CsharpTypes
 {
+    /// <summary>
+    /// <see cref="IEnumerable{T}"/> extensions.
+    /// </summary>
     public static class EnumerableExtensions
     {
         #region Syntax
-        
+
         /// <summary>
         /// Returns true if collection is null or empty.
         /// </summary>
@@ -32,9 +36,9 @@ namespace Depra.Extensions
         /// Returns empty if enumerable is null else same enumerable.
         /// </summary>
         public static IEnumerable<T> EmptyIfDefault<T>(this IEnumerable<T> source) => source.OrEmpty();
-        
+
         #endregion
-        
+
         #region Random
 
         /// <summary>
@@ -45,6 +49,7 @@ namespace Depra.Extensions
         /// <returns>random element</returns>
         public static T RandomElement<T>(this IEnumerable<T> elements)
         {
+            elements.ThrowIfNull("Collection is Null!");
             return elements.Any() == false
                 ? default(T)
                 : elements.ElementAt(Random.Range(0, elements.Count()));
@@ -57,17 +62,17 @@ namespace Depra.Extensions
         /// <summary>
         /// Search nearest point.
         /// </summary>
-        /// <param name="array">Point as components</param>
+        /// <param name="enumerable">Point as components</param>
         /// <param name="point">Position</param>
         /// <typeparam name="T">Point type</typeparam>
         /// <returns>Nearest/closest point</returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static Transform FindClosestPoint<T>(this IEnumerable<T> array, Vector3 point) where T : Component
+        public static Transform FindNearestPoint<T>(this IEnumerable<T> enumerable, Vector3 point) where T : Component
         {
             var distance = float.PositiveInfinity;
             Transform result = null;
 
-            foreach (var component in array)
+            foreach (var component in enumerable)
             {
                 var currentTransform = component.transform;
                 var currentDistance = Vector3.Distance(currentTransform.position, point);
@@ -81,7 +86,7 @@ namespace Depra.Extensions
 
             if (result == null)
             {
-                throw new ArgumentNullException(nameof(array), "array argument empty");
+                throw new ArgumentNullException(nameof(enumerable), "Collection argument empty!");
             }
 
             return result;

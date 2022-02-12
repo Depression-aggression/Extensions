@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Depra.Extensions
+namespace Depra.Extensions.CsharpTypes
 {
     public static class ArrayExtensions
     {

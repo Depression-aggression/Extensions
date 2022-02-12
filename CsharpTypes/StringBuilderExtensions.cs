@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Depra.Extensions
+namespace Depra.Extensions.CsharpTypes
 {
+    /// <summary>
+    /// <see cref="StringBuilder"/> extensions.
+    /// </summary>
     public static class StringBuilderExtensions
     {
         public static int IndexOf(this StringBuilder builder, char find, int startIndex = 0, bool ignoreCase = false)

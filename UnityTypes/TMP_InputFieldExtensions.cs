@@ -3,6 +3,9 @@ using TMPro;
 
 namespace Depra.Extensions.UnityTypes
 {
+    /// <summary>
+    /// <see cref="TMP_InputField"/> extensions.
+    /// </summary>
     public static class TMP_InputFieldExtensions
     {
         /// <summary>

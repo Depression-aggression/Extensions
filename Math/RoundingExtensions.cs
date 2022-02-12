@@ -16,7 +16,7 @@ namespace Depra.Extensions
         public static Quaternion RoundTo(this Quaternion value, float nearestDegree)
         {
             var eulerAngles = QuaternionToEuler(value).RoundTo(nearestDegree);
-            return eulerToQuaternion(eulerAngles);
+            return EulerToQuaternion(eulerAngles);
             
             // Rounding the components of quaternions doesn't work. I have no idea why. However, rounding the components of Euler angles DOES work.
             // you can't call Unity's methods for converting Euler angles <===> quaternions outside of Unity itself, because Unity is bullshit.
@@ -62,7 +62,7 @@ namespace Depra.Extensions
                 return euler;
             }
 
-            Quaternion eulerToQuaternion(Vector3 euler)
+            Quaternion EulerToQuaternion(Vector3 euler)
             {
                 var xOver2 = euler.x * Mathf.Deg2Rad * 0.5f;
                 var yOver2 = euler.y * Mathf.Deg2Rad * 0.5f;

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Depra.Extensions.Exceptions;
 
-namespace Depra.Extensions
+namespace Depra.Extensions.CsharpTypes
 {
     /// <summary>
-    /// Enum extensions.
+    /// <see cref="Enum"/> extensions.
     /// </summary>
     public static class EnumExtensions
     {

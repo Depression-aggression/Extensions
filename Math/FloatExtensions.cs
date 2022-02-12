@@ -37,25 +37,33 @@ namespace Depra.Extensions
         {
             return Math.Abs(x - other) < delta;
         }
-
-        //public unsafe static float FastInvSqrt(float x)
-        //{
-        //    float xhalf = 0.5f * x;
-        //    int i = *(int*)&x;
-        //    i = 0x5f375a86 - (i >> 1); //this constant is slightly more accurate than the common one
-        //    x = *(float*)&i;
-        //    x = x * (1.5f - xhalf * x * x);
-        //    return x;
-        //}
-
-        //public unsafe static float FastSqrt(float x)
-        //{
-        //    float xhalf = 0.5f * x;
-        //    int i = *(int*)&x;
-        //    i = 0x1fbd1df5 + (i >> 1);  // da magicks
-        //    x = *(float*)&i;
-        //    x = x * (1.5f - (xhalf * x * x)); //newtons method to improve approximation
-        //    return x;
-        //}
+        
+        // public unsafe static float FastInvSqrt(float x)
+        // {
+        //     float xhalf = 0.5f * x;
+        //     int i = *(int*)&x;
+        //     
+        //     // This constant is slightly more accurate than the common one.
+        //     i = 0x5f375a86 - (i >> 1);
+        //     x = *(float*)&i;
+        //     x = x * (1.5f - xhalf * x * x);
+        //     
+        //     return x;
+        // }
+        //
+        // public unsafe static float FastSqrt(float x)
+        // {
+        //     float xhalf = 0.5f * x;
+        //     int i = *(int*)&x;
+        //     
+        //     // Da magicks.
+        //     i = 0x1fbd1df5 + (i >> 1);
+        //     x = *(float*)&i;
+        //     
+        //     // Newtons method to improve approximation.
+        //     x = x * (1.5f - (xhalf * x * x));
+        //     
+        //     return x;
+        // }
     }
 }
